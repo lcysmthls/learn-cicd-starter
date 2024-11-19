@@ -1,0 +1,26 @@
+package auth
+
+import (
+    "testing"
+)
+
+
+func TestGetAPIKey(t *testing.T) {
+    // Mock headers with possible expected keys and values
+    headers := map[string]string{
+        "Authorization": "Bearer your_api_key_here",
+    }
+
+    // Call the GetAPIKey function
+    apiKey, err := GetAPIKey(headers)
+
+    // Assertions: Check if the apiKey matches what you expect
+    if err != nil {
+        t.Errorf("unexpected error: %v", err)
+    }
+
+    expectedKey := "your_api_key_here"
+    if apiKey != expectedKey {
+        t.Errorf("expected %v, got %v", expectedKey, apiKey)
+    }
+}
